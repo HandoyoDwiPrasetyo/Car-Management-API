@@ -1,6 +1,14 @@
 # Car-Management-API
 ---
 **Halaman Open Api Documentation** : http://localhost:8000/api-docs
+
+
+|  | Superadmin | Admin | Member |
+| :---- | :----: | ----: | ----: |
+| **username** | superadmin | admin1 | member1 |
+| **password** | admin | 12345 | 12345 |
+
+
   
 #### Superadmin :
   username : superadmin <br>
