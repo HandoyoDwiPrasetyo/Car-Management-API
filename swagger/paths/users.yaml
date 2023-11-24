@@ -1,0 +1,107 @@
+paths:
+  /api/auth/login:
+    post:
+      summary: Login User
+      tags:
+        - Users
+      consumes:
+        - application/json
+      requestBody:
+        required: true
+        content:
+          "application/json":
+            schema:
+              $ref: "#/components/schemas/UserLoginRequest"
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Access token
+          content:
+            "application/json":
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/Default"
+                  - properties:
+                      data:
+                        allOf:
+                          - $ref: "#/components/schemas/UserLoginResponse"
+  /api/auth/register-admin:
+    post:
+      summary: Register Admin
+      security:
+        - BearerAuth: []
+      tags:
+        - Users
+      consumes:
+        - application/json
+      requestBody:
+        required: true
+        content:
+          "application/json":
+            schema:
+              $ref: "#/components/schemas/UserRegisterRequest"
+      produces:
+        - application/json
+      responses:
+        201:
+          description: Registered Admin
+          content:
+            "application/json":
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/Default"
+                  - properties:
+                      data:
+                        allOf:
+                          - $ref: "#/components/schemas/UserRegisterResponse"
+  /api/auth/register:
+    post:
+      summary: Register Member
+      tags:
+        - Users
+      consumes:
+        - application/json
+      requestBody:
+        required: true
+        content:
+          "application/json":
+            schema:
+              $ref: "#/components/schemas/UserRegisterMemberRequest"
+      produces:
+        - application/json
+      responses:
+        201:
+          description: Registered Member
+          content:
+            "application/json":
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/Default"
+                  - properties:
+                      data:
+                        allOf:
+                          - $ref: "#/components/schemas/UserRegisterMemberResponse"
+  /api/auth/current-user:
+    get:
+      summary: Current User
+      security:
+        - BearerAuth: []
+      tags:
+        - Users
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        200:
+          description: User data
+          content:
+            "application/json":
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/Default"
+                  - properties:
+                      data:
+                        allOf:
+                          - $ref: "#/components/schemas/UserResponse"

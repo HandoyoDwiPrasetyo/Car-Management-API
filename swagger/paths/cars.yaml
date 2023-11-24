@@ -1,0 +1,158 @@
+paths:
+  /api/cars:
+    get:
+      summary: Get List Cars
+      tags:
+        - Cars
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        200:
+          description: List Cars
+          content:
+            "application/json":
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/Default"
+                  - properties:
+                      data:
+                        allOf:
+                          - $ref: "#/components/schemas/CarResponse"
+    post:
+      summary: Created Car
+      security:
+        - BearerAuth: []
+      tags:
+        - Cars
+      consumes:
+        - multipart/form-data
+      requestBody:
+        required: true
+        content:
+          "multipart/form-data":
+            schema:
+              $ref: "#/components/schemas/CarRequest"
+
+      produces:
+        - application/json
+      responses:
+        201:
+          description: Created User
+          content:
+            "application/json":
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/Default"
+                  - properties:
+                      data:
+                        allOf:
+                          - $ref: "#/components/schemas/CarResponse"
+  /api/cars/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of the car
+        schema:
+          type: integer
+    get:
+      summary: Get Car By ID
+      security:
+        - BearerAuth: []
+      tags:
+        - Cars
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        200:
+          description: List Users
+          content:
+            "application/json":
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/Default"
+                  - properties:
+                      data:
+                        allOf:
+                          - $ref: "#/components/schemas/CarResponse"
+    delete:
+      summary: Delete Car
+      security:
+        - BearerAuth: []
+      tags:
+        - Cars
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Delete Car
+          content:
+            "application/json":
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/Default"
+    put:
+      summary: Update Car
+      security:
+        - BearerAuth: []
+      tags:
+        - Cars
+      consumes:
+        - multipart/form-data
+      requestBody:
+        required: true
+        content:
+          "multipart/form-data":
+            schema:
+              $ref: "#/components/schemas/CarRequest"
+      produces:
+        - application/json
+
+      responses:
+        200:
+          description: Update Car
+          content:
+            "application/json":
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/Default"
+                  - properties:
+                      data:
+                        allOf:
+                          - $ref: "#/components/schemas/CarResponse"
+  /api/users?name={name}:
+    parameters:
+      - name: name
+        in: path
+        required: true
+        description: Name of the user
+        schema:
+          type: string
+    get:
+      summary: Get List Users By Name
+      security:
+        - BearerAuth: []
+      tags:
+        - Cars
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        200:
+          description: List Users
+          content:
+            "application/json":
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/Default"
+                  - properties:
+                      data:
+                        allOf:
+                          - $ref: "#/components/schemas/UserResponse"

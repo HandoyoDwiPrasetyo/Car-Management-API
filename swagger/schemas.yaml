@@ -1,0 +1,160 @@
+components:
+  schemas:
+    Default:
+      type: object
+      properties:
+        message:
+          type: string
+        success:
+          type: boolean
+        code:
+          type: number
+        data:
+          type: object
+    UserLoginRequest:
+      type: object
+      properties:
+        username:
+          type: string
+          example: superadmin
+        password:
+          type: string
+          example: admin
+    UserLoginResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+    UserRegisterRequest:
+      type: object
+      properties:
+        email:
+          type: string
+          example: admin@car-rental.com
+        username:
+          type: string
+          example: admin
+        password:
+          type: string
+          example: 12345
+    UserRegisterResponse:
+      type: object
+      properties:
+        email:
+          type: string
+        username:
+          type: string
+        role:
+          type: string
+    UserRegisterMemberRequest:
+      type: object
+      properties:
+        email:
+          type: string
+          example: member@car-rental.com
+        username:
+          type: string
+          example: member
+        password:
+          type: string
+          example: 12345
+    UserRegisterMemberResponse:
+      type: object
+      properties:
+        email:
+          type: string
+        username:
+          type: string
+        role:
+          type: string
+    UserRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          example: bos
+        email:
+          type: string
+          example: bos@gmail.com
+        password:
+          type: string
+          example: bos123456
+        profile_picture_url:
+          type: string
+          format: binary
+        role:
+          type: string
+          example: user
+    UserResponse:
+      type: object
+      properties:
+        email:
+          type: string
+        username:
+          type: string
+        role:
+          type: string
+    CarRequest:
+      type: object
+      properties:
+        plate:
+          type: string
+          example: DBH-3457
+        manufacture:
+          type: string
+          example: Ford
+        model:
+          type: string
+          example: F150
+        image:
+          type: string
+          format: binary
+        rentPerDay:
+          type: number
+          example: 800000
+        capacity:
+          type: number
+          example: 2
+        description:
+          type: string
+          example: Rear passenger map pockets. Electrochromic rearview mirror. Dual chrome exhaust tips. Locking glove box.
+        availableAt:
+          type: string
+          format: date-time
+          example: 2022-03-23T15:49:05.563Z
+        transmission:
+          type: string
+          example: Automatic
+        available:
+          type: boolean
+          example: true
+        type:
+          type: string
+          example: Convertible
+        year:
+          type: number
+          example: 2022
+        options:
+          type: array
+          items:
+            type: string
+          example: ["{'Keyless Entry", "Power Windows", "MP3 (Single Disc)'}"]
+        specs:
+          type: array
+          items:
+            type: string
+          example:
+            [
+              "{'Rear passenger map pockets",
+              "Electrochromic rearview mirror",
+              "Dual chrome exhaust tips'}",
+            ]
+    CarResponse:
+      type: object
+      properties:
+        email:
+          type: string
+        username:
+          type: string
+        role:
+          type: string
